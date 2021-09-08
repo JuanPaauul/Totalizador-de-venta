@@ -2,6 +2,7 @@ const form = document.querySelector("#register");
 const cant = document.querySelector("#cant-items");
 const price = document.querySelector("#precio-items");
 const state = document.querySelector("#codigo-estado");
+const description = document.querySelector("#descripcion-items");
             /*UT               	6.65%
         	NV               	8.00%
         	TX                	6.25%
@@ -72,7 +73,8 @@ form.addEventListener("submit", (event) => {
     var msgTotalprice= "El precio total del pedido sin impuestos ni descuentos es: ";
     var msgTax = "El precio Subtotal con impuesto es: ";
     var msgDiscaunt ="El descuento por su compra es : ";
-    var msgTotGlobal = "El precio total global es: "
+    var msgTotGlobal = "El precio total global es: ";
+    var msgDescription = "Descripcion del producto: ";
     var tot = calculateTot(cant.value,price.value);
     var subTot = calculateSubTot(tot,state.value);
     var discountTot = calculateDiscount(subTot);
@@ -81,5 +83,6 @@ form.addEventListener("submit", (event) => {
         + msgTotalprice + tot + "\n"
         + msgTax + subTot + "\n"
         + msgDiscaunt + discountTot + "\n"
-        + msgTotGlobal + totalGlobal(subTot,discountTot));
+        + msgTotGlobal + totalGlobal(subTot,discountTot) + "\n"
+        + msgDescription + description.value);
 });
