@@ -62,13 +62,17 @@ function calculateDiscount(total)
     }
     return (total*discount);
 }
+function totalGlobal(totTax,discaunt) {
+    return totTax-discaunt;
+}
 form.addEventListener("submit", (event) => {
 
     var msg= "La cantidad registrada de items es: ";
     var msgPrice = "El precio del producto es: ";
-    var msgTotalprice= "El precio total del pedido sin impuestos ni descuentos es: "
-    var msgTax = "El precio Subtotal con impuesto es: "
-    var msgDiscaunt ="El descuento por su compra es : "
+    var msgTotalprice= "El precio total del pedido sin impuestos ni descuentos es: ";
+    var msgTax = "El precio Subtotal con impuesto es: ";
+    var msgDiscaunt ="El descuento por su compra es : ";
+    var msgTotGlobal = "El precio total global es: "
     var tot = calculateTot(cant.value,price.value);
     var subTot = calculateSubTot(tot,state.value);
     var discountTot = calculateDiscount(subTot);
@@ -76,5 +80,6 @@ form.addEventListener("submit", (event) => {
         + msgPrice + price.value+ "\n"
         + msgTotalprice + tot + "\n"
         + msgTax + subTot + "\n"
-        + msgDiscaunt + discountTot);
+        + msgDiscaunt + discountTot + "\n"
+        + msgTotGlobal + totalGlobal(subTot,discountTot));
 });
